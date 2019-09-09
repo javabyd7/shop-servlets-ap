@@ -1,8 +1,10 @@
 package pl.sda.shop;
 
-import pl.sda.shop.repository.DummyProductCatalogue;
+import pl.sda.shop.repository.JpaProductCatalogue;
 import pl.sda.shop.repository.ProductCatalogue;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -13,7 +15,10 @@ public class ServletsInitializer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
-        ProductCatalogue products = new DummyProductCatalogue();
+        EntityManager entityManager = Persistence
+                .createEntityManagerFactory("shop")
+                .createEntityManager();
+        ProductCatalogue products = new JpaProductCatalogue(entityManager);
         ServletContext context = event.getServletContext();
         context.addServlet("AddProduct", new AddProductServlet(products))
                 .addMapping("/addProduct");

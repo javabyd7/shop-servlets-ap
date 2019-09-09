@@ -4,6 +4,8 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="shop">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>pl.sda.shop.model.Product</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <!-- Uncomment the following two lines to generate the schema file -->
@@ -15,7 +17,7 @@
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="root"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            <!--<property name="hibernate.show_sql" value="true"/>-->
+            <property name="hibernate.show_sql" value="true"/>
             <property name="javax.persistence.jdbc.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>

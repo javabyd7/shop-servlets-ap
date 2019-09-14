@@ -17,6 +17,7 @@
         <td>Product</td>
         <td>Price</td>
         <td>Quantity</td>
+        <td>Total Earnings</td>
     </tr>
     </thead>
     <tbody>
@@ -31,6 +32,10 @@
             <td>
                 <c:out value="${product.quantity}"/>
             </td>
+            <td>
+                <c:out value="${product.calculatePotentialTotalEarnings()}"/>
+            </td>
+
         </tr>
     </c:forEach>
     </tbody>

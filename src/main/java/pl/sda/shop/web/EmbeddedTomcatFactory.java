@@ -1,4 +1,4 @@
-package pl.sda.shop;
+package pl.sda.shop.web;
 
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.connector.Connector;

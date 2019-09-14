@@ -1,7 +1,4 @@
-package pl.sda.shop;
-
-import pl.sda.shop.repository.JpaProductCatalogue;
-import pl.sda.shop.repository.ProductCatalogue;
+package pl.sda.shop.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

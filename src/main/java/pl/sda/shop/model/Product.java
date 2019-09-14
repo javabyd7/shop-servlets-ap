@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +16,13 @@ import java.io.Serializable;
 public class Product implements Serializable {
 	@Id
 	private String name;
-	private int price;
+	private double price;
 	private int quantity;
 
+	public double calculatePotentialTotalEarnings() {
+        return BigDecimal.valueOf(price)
+                .multiply(BigDecimal.valueOf(quantity))
+                .setScale(2)
+                .doubleValue();
+    }
 }

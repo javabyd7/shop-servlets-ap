@@ -1,4 +1,4 @@
-package pl.sda.shop;
+package pl.sda.shop.web;
 
 import pl.sda.shop.model.Product;
 import pl.sda.shop.repository.ProductCatalogue;

@@ -12,11 +12,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product  implements Serializable {
-
-    @Id
-    private String name;
-    private int price;
-    private int quantity;
+public class Product implements Serializable {
+	@Id
+	private String name;
+	private int price;
+	private int quantity;
 
 }

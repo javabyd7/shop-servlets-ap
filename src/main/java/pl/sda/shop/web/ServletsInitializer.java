@@ -20,12 +20,18 @@ public class ServletsInitializer implements ServletContextListener {
 		ProductCatalogue products = ProductCatalogueFactory
 			.getCatalogue();
 		ServletContext context = event.getServletContext();
+
 		context.addServlet("AddProduct",
-			new AddProductServlet(products, userService))
+			new AddProductServlet(products))
 			.addMapping("/addProduct");
+
 		context.addServlet("SearchProduct",
 			new SearchProductServlet(products))
 			.addMapping("/searchProduct");
+
+		context.addFilter("PermissionFilter",new PermissionFilter(userService))
+				.addMappingForUrlPatterns(null,true,"/addProduct", "/searchProduct");
+
 		context.addServlet("Login",new LoginServlet( userService))
 				.addMapping("/login");
 	}

@@ -1,8 +1,6 @@
 package pl.sda.shop.web;
 
 import pl.sda.shop.model.Product;
-import pl.sda.shop.model.User;
-import pl.sda.shop.model.UserRole;
 import pl.sda.shop.repository.ProductCatalogue;
 
 import javax.servlet.ServletException;
@@ -22,19 +20,12 @@ public class AddProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User)req.getSession().getAttribute("user");
-        boolean success = false;
-        if(user != null){
-            success = user.hasRole(UserRole.ADMIN);
-            if (success) {
-                products.add(new Product(
-                        req.getParameter("name"),
-                        Integer.parseInt(req.getParameter("price")),
-                        Integer.parseInt(req.getParameter("quantity"))));
-            }
-        }
+            products.add(new Product(
+                req.getParameter("name"),
+                Integer.parseInt(req.getParameter("price")),
+                Integer.parseInt(req.getParameter("quantity"))));
 
-        resp.sendRedirect("/addProduct?success="+success);
+        resp.sendRedirect("/addProduct");
     }
 
     @Override

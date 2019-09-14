@@ -11,10 +11,29 @@
     Name <input name="name" type="text">
     <input type="submit" value="Search">
 </form>
-<c:out value="${product.name}"/>
-<br>
-<c:out value="${product.price}"/>
-<br>
-<c:out value="${product.quantity}"/>
+<table>
+    <thead>
+    <tr>
+        <td>Product</td>
+        <td>Price</td>
+        <td>Quantity</td>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="product" items="${products}">
+        <tr>
+            <td>
+                <c:out value="${product.name}"/>
+            </td>
+            <td>
+                <c:out value="${product.price}"/>
+            </td>
+            <td>
+                <c:out value="${product.quantity}"/>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>

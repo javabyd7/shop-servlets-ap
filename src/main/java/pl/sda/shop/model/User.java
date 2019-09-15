@@ -34,6 +34,6 @@ public class User {
     }
 
     public boolean hasRole(UserRole role) {
-        return role.equals(this.role);
+        return this.role.ensures(role);
     }
 }

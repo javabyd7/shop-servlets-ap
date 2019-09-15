@@ -17,11 +17,13 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public void add(User user) {
+        findByName(user.getName()).ifPresent(u -> {
+            throw new  UserAlreadyExistsExeption("User Already Exist");
+        });
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         entityManager.persist(user);
         transaction.commit();
-
     }
 
     @Override

@@ -1,7 +1,6 @@
 package pl.sda.shop.web;
 
-import pl.sda.shop.repository.ProductCatalogue;
-import pl.sda.shop.repository.ProductCatalogueFactory;
+import pl.sda.shop.repository.*;
 import pl.sda.shop.security.HttpSessionUserService;
 import pl.sda.shop.security.UserService;
 
@@ -16,7 +15,8 @@ public class ServletsInitializer implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 
-		UserService userService = new HttpSessionUserService();
+		UserService userService = new HttpSessionUserService(UserRepositoryFactory.getUserRepository());
+
 		ProductCatalogue products = ProductCatalogueFactory
 			.getCatalogue();
 		ServletContext context = event.getServletContext();
